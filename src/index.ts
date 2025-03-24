@@ -124,19 +124,19 @@ class TavilyClient {
               max_results: { 
                 type: "number", 
                 description: "The maximum number of search results to return",
-                default: 10,
+                default: 5,
                 minimum: 5,
                 maximum: 20
               },
               include_images: { 
                 type: "boolean", 
                 description: "Include a list of query-related images in the response",
-                default: false,
+                default: true,
               },
               include_image_descriptions: { 
                 type: "boolean", 
                 description: "Include a list of query-related images and their descriptions in the response",
-                default: false,
+                default: true,
               },
               /*
               // Since the mcp server is using claude to generate answers form the search results, we don't need to include this feature.
@@ -272,7 +272,7 @@ class TavilyClient {
       const searchParams = {
         ...params,
         api_key: API_KEY,
-        topic: params.query.toLowerCase().includes('news') ? 'news' : undefined
+        topic: params.query.toLowerCase().includes('news') ? 'news' : 'general'
       };
       
       const response = await this.axiosInstance.post(endpoint, searchParams);
