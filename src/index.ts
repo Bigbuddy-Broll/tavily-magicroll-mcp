@@ -238,7 +238,8 @@ class TavilyClient {
         return {
           content: [{
             type: "text",
-            text: formatResults(response)
+            // text: formatResults(response)
+            text: response
           }]
         };
       } catch (error: any) {
@@ -272,7 +273,7 @@ class TavilyClient {
       const searchParams = {
         ...params,
         api_key: API_KEY,
-        topic: params.query.toLowerCase().includes('news') ? 'news' : 'general'
+        // topic: params.query.toLowerCase().includes('news') ? 'news' : 'general'
       };
       
       const response = await this.axiosInstance.post(endpoint, searchParams);
